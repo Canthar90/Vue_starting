@@ -1,11 +1,13 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
+<script setup></script>
 
 <template>
   <div class="wrapper">
-    <HelloWorld msg="You did it!" />
-    <HelloWorld msg="yeeeeee!" />
-    <HelloWorld msg="You did it!" />
+    <h1 class="mt-8 text-center text-6xl">Hello vue</h1>
   </div>
 </template>
+
+<style scoped>
+h1 {
+  color: purple;
+}
+</style>

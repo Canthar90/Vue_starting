@@ -26,14 +26,14 @@
 // console.log(developer.salary)
 // console.log(developer.lookingForWork)
 
-export const evenOrOdd = (number) => {
-  if (number % 2 === 0) {
-    return 'Even'
-  } else {
-    return 'Odd'
-  }
-}
+// export const evenOrOdd = (number) => {
+//   if (number % 2 === 0) {
+//     return 'Even'
+//   } else {
+//     return 'Odd'
+//   }
+// }
 
-export const multiply = (a, b) => {
-  return a * b
-}
+// export const multiply = (a, b) => {
+//   return a * b
+// }

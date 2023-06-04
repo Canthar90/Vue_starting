@@ -10,6 +10,11 @@
             </li>
           </ul>
         </nav>
+
+        <div class="ml-auto flex h-full items-center">
+          <profile-image v-if="isLogedIn" />
+          <action-button v-else @click="loginUser" />
+        </div>
       </div>
     </div>
   </header>
@@ -17,13 +22,26 @@
 
 <!-- we will use option API right now -->
 <script>
+import ActionButton from './ActionButton.vue'
+import ProfileImage from '@/components/ProfileImage.vue'
+
 export default {
   name: 'MainNav',
+  components: {
+    ActionButton,
+    ProfileImage
+  },
   data() {
     return {
       company: 'Myszojeleń Careers',
       url: 'https://careers.google.com',
-      menuItems: ['Teams', 'Locations', 'Life at Bobo Corp', 'How we hire', 'Students', 'Jobs']
+      menuItems: ['Teams', 'Locations', 'Life at Bobo Corp', 'How we hire', 'Students', 'Jobs'],
+      isLogedIn: false
+    }
+  },
+  methods: {
+    loginUser() {
+      this.isLogedIn = true
     }
   }
 }

@@ -38,21 +38,31 @@
 //   return a * b
 // }
 
-const numbers = [1, 2, 3, 4, 5]
+// const numbers = [1, 2, 3, 4, 5]
 
-const names = ['BOBBY', 'SALLY', 'DEBBIE']
+// const names = ['BOBBY', 'SALLY', 'DEBBIE']
 
-// an array of squares
-// [1, 4, 9, 16, 25]
+// // an array of squares
+// // [1, 4, 9, 16, 25]
 
-const squares = numbers.map((number) => {
-  return number * number
-})
+// const squares = numbers.map((number) => {
+//   return number * number
+// })
 
-const lowercaseNames = names.map((name) => {
-  return name.toLowerCase()
-})
+// const lowercaseNames = names.map((name) => {
+//   return name.toLowerCase()
+// })
 
-console.log(squares)
+// console.log(squares)
 
-console.log(lowercaseNames)
+// console.log(lowercaseNames)
+
+//
+
+const favouriteFood = 'sushi'
+
+const goodFoods = {
+  [favouriteFood]: true
+}
+
+console.log(goodFoods)

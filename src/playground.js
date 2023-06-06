@@ -59,10 +59,21 @@
 
 //
 
-const favouriteFood = 'sushi'
+// const favouriteFood = 'sushi'
 
-const goodFoods = {
-  [favouriteFood]: true
-}
+// const goodFoods = {
+//   [favouriteFood]: true
+// }
 
-console.log(goodFoods)
+// console.log(goodFoods)
+
+const interval = setInterval(() => {
+  console.log('I will print every 2 seconds')
+}, 2000)
+
+console.log(interval)
+
+setTimeout(() => {
+  clearInterval(interval)
+  console.log('Interval cleared')
+}, 10000)

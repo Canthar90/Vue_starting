@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full text-sm">
+  <header :class="['w-full', 'text-sm', headerHeightClass]">
     <div class="fixed left-0 top-0 h-16 w-full bg-white">
       <div class="mx-auto flex h-full flex-nowrap border-b border-solid border-brand-gray-1 px-8">
         <a :href="url" class="flex h-full items-center text-xl">{{ company }}</a>
@@ -13,7 +13,7 @@
 
         <div class="ml-auto flex h-full items-center">
           <profile-image v-if="isLogedIn" />
-          <action-button v-else text="Sign in" @click="loginUser" />
+          <action-button v-else text="Sign in" type="primary" @click="loginUser" />
         </div>
       </div>
 
@@ -41,6 +41,14 @@ export default {
       url: 'https://careers.google.com',
       menuItems: ['Teams', 'Locations', 'Life at Bobo Corp', 'How we hire', 'Students', 'Jobs'],
       isLogedIn: false
+    }
+  },
+  computed: {
+    headerHeightClass() {
+      return {
+        'h-16': !this.isLogedIn, //true
+        'h-32': this.isLogedIn //false
+      }
     }
   },
   methods: {

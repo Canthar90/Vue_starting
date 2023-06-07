@@ -5,7 +5,7 @@
       <div class="relative flex h-full flex-1 items-center pr-3">
         <label class="absolute -top-10 left-0">Role</label>
 
-        <text-input placeholder="Software engineer" />
+        <text-input placeholder="Software engineer" @handle-input="role = $event" />
       </div>
 
       <span
@@ -14,7 +14,7 @@
       >
       <div class="relative flex h-full flex-1 items-center pl-3">
         <label class="absolute -top-10 left-0">Where?</label>
-        <text-input placeholder="Los angeles" />
+        <text-input placeholder="Los angeles" @handle-input="location = $event" />
       </div>
     </div>
 

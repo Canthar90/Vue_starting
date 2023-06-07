@@ -24,9 +24,9 @@
 
 <!-- we will use option API right now -->
 <script>
-import ActionButton from './ActionButton.vue'
-import ProfileImage from '@/components/ProfileImage.vue'
-import TheSubnav from '@/components/TheSubnav.vue'
+import ActionButton from '../Shared/ActionButton.vue'
+import ProfileImage from '@/components/Navigation/ProfileImage.vue'
+import TheSubnav from '@/components/Navigation/TheSubnav.vue'
 
 export default {
   name: 'MainNav',

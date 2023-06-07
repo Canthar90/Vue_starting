@@ -5,11 +5,10 @@
       <div class="relative flex h-full flex-1 items-center pr-3">
         <label class="absolute -top-10 left-0">Role</label>
         <input
+          v-model="role"
           type="text"
-          :value="role"
           placeholder="Software engineer"
           class="w-full text-lg font-normal focus:outline-none"
-          @input="updateRole"
         />
       </div>
 
@@ -20,11 +19,10 @@
       <div class="relative flex h-full flex-1 items-center pl-3">
         <label class="absolute -top-10 left-0">Where?</label>
         <input
+          v-model="location"
           type="text"
-          :value="location"
           placeholder="Los Angeles"
           class="w-full text-lg font-normal focus:outline-none"
-          @input="location = $event.target.value"
         />
       </div>
     </div>
@@ -43,11 +41,6 @@ export default {
     return {
       role: '',
       location: ''
-    }
-  },
-  methods: {
-    updateRole(event) {
-      this.role = event.target.value
     }
   }
 }

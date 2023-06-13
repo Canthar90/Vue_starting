@@ -1,9 +1,18 @@
 <template>
-  <main class="flex-auto bg-brand-gray-2 p-8">Job Listings</main>
+  <main class="flex-auto bg-brand-gray-2 p-8">
+    <ol>
+      <job-listing />
+      <job-listing />
+      <job-listing />
+    </ol>
+  </main>
 </template>
 
 <script>
+import JobListing from '@/components/JobReasults/JobListing.vue'
+
 export default {
-  name: 'JobListings'
+  name: 'JobListings',
+  components: { JobListing }
 }
 </script>

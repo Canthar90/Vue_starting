@@ -1,19 +1,19 @@
 <template>
-  <the-subnav />
-  <h1 class="text-6xl font-bold">Jobs Reasults page</h1>
-  <button @click="goToHome">Go to Home Page</button>
+  <div class="flex w-full flex-row flex-nowrap">
+    <job-filters-sidebar />
+    <job-listings />
+  </div>
 </template>
 
 <script>
-import TheSubnav from '@/components/Navigation/TheSubnav.vue'
+import JobFiltersSidebar from '@/components/JobReasults/JobFiltersSidebar/JobFiltersSidebar.vue'
+import JobListings from '@/components/JobReasults/JobListings.vue'
 
 export default {
   mame: 'JobsReasultsView',
-  components: { TheSubnav },
-  methods: {
-    goToHome() {
-      this.$router.push({ name: 'Home' })
-    }
+  components: {
+    JobFiltersSidebar,
+    JobListings
   }
 }
 </script>

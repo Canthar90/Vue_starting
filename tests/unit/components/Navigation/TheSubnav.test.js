@@ -3,22 +3,26 @@ import { render, screen } from '@testing-library/vue'
 import TheSubnav from '@/components/Navigation/TheSubnav.vue'
 
 describe('TheSubnav', () => {
+  const renderTheSubnav = (routeName) => {
+    render(TheSubnav, {
+      global: {
+        mocks: {
+          $route: {
+            name: routeName
+          }
+        },
+        stubs: {
+          FontAwesomeIcon: true
+        }
+      }
+    })
+  }
+
   describe('when user is on jobs page', () => {
     it('displays job coun', () => {
-      const $route = {
-        name: 'JobsReasults'
-      }
+      const routeName = 'JobsReasults'
 
-      render(TheSubnav, {
-        global: {
-          mocks: {
-            $route: $route
-          },
-          stubs: {
-            FontAwesomeIcon: true
-          }
-        }
-      })
+      renderTheSubnav(routeName)
 
       const jobCount = screen.getByText('2137')
 
@@ -28,20 +32,9 @@ describe('TheSubnav', () => {
 
   describe('when user is not on jobs page', () => {
     it('does NOT displays job count', () => {
-      const $route = {
-        name: 'Home'
-      }
+      const routeName = 'Home'
 
-      render(TheSubnav, {
-        global: {
-          mocks: {
-            $route: $route
-          },
-          stubs: {
-            FontAwesomeIcon: true
-          }
-        }
-      })
+      renderTheSubnav(routeName)
 
       const jobCount = screen.queryByText('2137')
 

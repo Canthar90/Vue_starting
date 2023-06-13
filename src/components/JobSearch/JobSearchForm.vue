@@ -16,8 +16,8 @@
         >in</span
       >
       <div class="relative flex h-full flex-1 items-center pl-3">
-        <label class="absolute -top-10 left-0">Where?</label>
-        <text-input v-model="location" placeholder="Los angeles" />
+        <label for="location" class="absolute -top-10 left-0">Where?</label>
+        <text-input id="location" v-model="location" placeholder="Los Angeles" />
       </div>
     </div>
 

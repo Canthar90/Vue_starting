@@ -82,6 +82,15 @@ const axios = require('axios')
 
 const url = 'http://localhost:3000/jobs'
 
-axios.get(url).then((response) => {
+const fethJobsV1 = () => {
+  axios.get(url).then((response) => {
+    console.log(response.data)
+  })
+}
+
+const fethJobsV2 = async () => {
+  const response = await axios.get(url)
   console.log(response.data)
-})
+}
+
+fethJobsV2()

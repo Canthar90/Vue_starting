@@ -67,13 +67,21 @@
 
 // console.log(goodFoods)
 
-const interval = setInterval(() => {
-  console.log('I will print every 2 seconds')
-}, 2000)
+// const interval = setInterval(() => {
+//   console.log('I will print every 2 seconds')
+// }, 2000)
 
-console.log(interval)
+// console.log(interval)
 
-setTimeout(() => {
-  clearInterval(interval)
-  console.log('Interval cleared')
-}, 10000)
+// setTimeout(() => {
+//   clearInterval(interval)
+//   console.log('Interval cleared')
+// }, 10000)
+
+const axios = require('axios')
+
+const url = 'http://localhost:3000/jobs'
+
+axios.get(url).then((response) => {
+  console.log(response.data)
+})

@@ -2,12 +2,13 @@ import { render, screen } from '@testing-library/vue'
 import userEvent from '@testing-library/user-event'
 import { RouterLinkStub } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
+import { useUserStore } from '@/stores/user'
 
 import MainNav from '@/components/Navigation/MainNav.vue'
 
 describe('MainNav', () => {
   const renderMainNav = () => {
-    const pinia = createTestingPinia({ stubActions: false })
+    const pinia = createTestingPinia()
 
     const $route = {
       name: 'Home'
@@ -49,6 +50,7 @@ describe('MainNav', () => {
   describe('When the user logs in', () => {
     it('displays user profile pictiure', async () => {
       renderMainNav()
+      const userStore = useUserStore()
 
       let profileImage = screen.queryByRole('img', {
         name: /Profile pictiure/i //this means look for element with no case sensitivity
@@ -58,6 +60,7 @@ describe('MainNav', () => {
       const loginButton = screen.getByRole('button', {
         text: /Sing in/i
       })
+      userStore.isLoggedIn = true
       await userEvent.click(loginButton)
 
       profileImage = screen.getByRole('img', {

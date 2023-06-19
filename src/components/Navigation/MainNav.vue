@@ -16,19 +16,19 @@
         </nav>
 
         <div class="ml-auto flex h-full items-center">
-          <profile-image v-if="userStore.isLoggedIn" />
-          <action-button v-else text="Sign in" type="primary" @click="userStore.loginUser" />
+          <profile-image v-if="isLoggedIn" />
+          <action-button v-else text="Sign in" type="primary" @click="loginUser" />
         </div>
       </div>
 
-      <the-subnav v-if="userStore.isLoggedIn" />
+      <the-subnav v-if="isLoggedIn" />
     </div>
   </header>
 </template>
 
 <!-- we will use option API right now -->
 <script>
-import { mapStores } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 
 import { useUserStore } from '@/stores/user'
 
@@ -56,13 +56,16 @@ export default {
     }
   },
   computed: {
-    ...mapStores(useUserStore),
+    ...mapState(useUserStore, ['isLoggedIn']),
     headerHeightClass() {
       return {
-        'h-16': !this.userStore.isLoggedIn, //true
-        'h-32': this.userStore.isLoggedIn //false
+        'h-16': !this.isLoggedIn, //true
+        'h-32': this.isLoggedIn //false
       }
     }
+  },
+  methods: {
+    ...mapActions(useUserStore, ['loginUser'])
   }
 }
 </script>

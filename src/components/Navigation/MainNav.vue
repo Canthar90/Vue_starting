@@ -16,12 +16,12 @@
         </nav>
 
         <div class="ml-auto flex h-full items-center">
-          <profile-image v-if="userStore.isLogedIn" />
+          <profile-image v-if="userStore.isLoggedIn" />
           <action-button v-else text="Sign in" type="primary" @click="userStore.loginUser" />
         </div>
       </div>
 
-      <the-subnav v-if="userStore.isLogedIn" />
+      <the-subnav v-if="userStore.isLoggedIn" />
     </div>
   </header>
 </template>
@@ -30,7 +30,7 @@
 <script>
 import { mapStores } from 'pinia'
 
-import { useUserStore } from '@/stories/user'
+import { useUserStore } from '@/stores/user'
 
 import ActionButton from '../Shared/ActionButton.vue'
 import ProfileImage from '@/components/Navigation/ProfileImage.vue'
@@ -59,8 +59,8 @@ export default {
     ...mapStores(useUserStore),
     headerHeightClass() {
       return {
-        'h-16': !this.userStore.isLogedIn, //true
-        'h-32': this.userStore.isLogedIn //false
+        'h-16': !this.userStore.isLoggedIn, //true
+        'h-32': this.userStore.isLoggedIn //false
       }
     }
   }

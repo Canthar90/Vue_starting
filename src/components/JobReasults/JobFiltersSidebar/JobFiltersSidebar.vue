@@ -39,6 +39,8 @@
           </fieldset>
         </div>
       </collapsible-accordion>
+
+      <collapsible-accordion header="Degree"></collapsible-accordion>
     </section>
   </div>
 </template>

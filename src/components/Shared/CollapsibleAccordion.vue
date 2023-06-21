@@ -2,15 +2,17 @@
   <div class="border-b border-solid border-brand-gray-2 py-5 transition-all">
     <div
       class="flex cursor-pointer flex-wrap items-center justify-between"
-      @click="open"
       role="button"
+      @click="open"
     >
       <h3 class="text-base font-semibold">{{ header }}</h3>
       <font-awesome-icon :icon="caretIcon" />
     </div>
 
     <div v-if="isOpen" class="mt-5 w-full">
-      <slot></slot>
+      <slot>
+        <p>Woops something went wrong</p>
+      </slot>
     </div>
   </div>
 </template>

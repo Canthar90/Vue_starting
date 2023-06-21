@@ -1,7 +1,7 @@
 <template>
   <div class="border-b border-solid border-brand-gray-2 py-5 transition-all">
     <div class="flex cursor-pointer flex-wrap items-center justify-between" @click="open">
-      <h3 class="text-base font-semibold">Organizations</h3>
+      <h3 class="text-base font-semibold">{{ header }}</h3>
       <font-awesome-icon :icon="caretIcon" />
     </div>
 
@@ -14,6 +14,12 @@
 <script>
 export default {
   name: 'CollapsibleAccordion',
+  props: {
+    header: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       isOpen: false

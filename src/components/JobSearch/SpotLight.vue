@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="spoltight in spotlights" :key="spoltight.id">
+    <li v-for="spotlight in spotlights" :key="spotlight.id">
       <slot :spotlight="spotlight"></slot>
     </li>
   </ul>

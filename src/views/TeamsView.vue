@@ -1,10 +1,10 @@
 <template>
   <header-container>
-    <template v-slot:title>
+    <template #title>
       <h1 class="w-full text-4xl font-normal">Tems</h1>
     </template>
 
-    <template v-slot:subtitle>
+    <template #subtitle>
       <h2 class="my-4 w-full text-base font-light">
         It's awesome working here. Why don't you come to join uss
       </h2>

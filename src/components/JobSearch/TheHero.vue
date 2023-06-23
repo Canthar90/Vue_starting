@@ -18,17 +18,17 @@
     </section>
 
     <spot-light class="flex flex-row justify-center pb-16">
-      <template #default="slotProps">
+      <template #default="{ img, title, description }">
         <router-link
           to="/jobs/reasults"
           class="mx-5 flex h-96 w-72 flex-col rounded-lg border bg-brand-gray-2"
         >
-          <img :src="slotProps.spotlight.img" alt="" class="object-contain" />
+          <img :src="img" alt="" class="object-contain" />
           <div class="mt-3 h-48 px-6 py-4">
-            <h3 class="text-lg font-medium">{{ slotProps.spotlight.title }}</h3>
+            <h3 class="text-lg font-medium">{{ title }}</h3>
 
             <p class="mt-3 text-sm">
-              {{ slotProps.spotlight.description }}
+              {{ description }}
             </p>
 
             <router-link to="/jobs/reasults" class="px-6 pb-4 text-brand-blue-1"

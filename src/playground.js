@@ -95,6 +95,20 @@
 
 // fethJobsV2()
 
-const sushi = ['Tuna', 'Salmon', 'Eel', 'Shrimp', 'Octopus', 'Uni']
+// const sushi = ['Tuna', 'Salmon', 'Eel', 'Shrimp', 'Octopus', 'Uni']
 
-console.log(sushi.slice(2, 4))
+// console.log(sushi.slice(2, 4))
+
+// LEARNING SETS BELOW
+
+// Arrays - order
+// Objects - association
+// Set - uniquness
+
+const numbers = new Set()
+numbers.add(5)
+numbers.add(10)
+numbers.add(15)
+numbers.add(10)
+
+console.log(numbers)

@@ -105,10 +105,24 @@
 // Objects - association
 // Set - uniquness
 
-const numbers = new Set()
-numbers.add(5)
-numbers.add(10)
-numbers.add(15)
-numbers.add(10)
+// const numbers = new Set()
+// numbers.add(5)
+// numbers.add(10)
+// numbers.add(15)
+// numbers.add(10)
 
-console.log(numbers)
+// console.log(numbers)
+
+// -----------------------------
+// FILTER
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 11, 23, 521]
+
+console.log(numbers.filter((number) => number > 6))
+
+const jobs = [
+  { title: 'Angular dev', organization: 'Microsoft' },
+  { title: 'Programmer', organization: 'Google' },
+  { title: 'Developer', organization: 'Microsoft' }
+]
+
+console.log(jobs.filter((job) => job.organization === 'Microsoft'))

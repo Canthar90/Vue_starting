@@ -1,11 +1,17 @@
 import { render, screen } from '@testing-library/vue'
+import { createTestingPinia } from '@pinia/testing'
 
 import TheSubnav from '@/components/Navigation/TheSubnav.vue'
+import { useJobsStore } from '@/stores/jobs'
 
 describe('TheSubnav', () => {
   const renderTheSubnav = (routeName) => {
+    const pinia = createTestingPinia()
+    const jobsStore = useJobsStore()
+
     render(TheSubnav, {
       global: {
+        plugins: [pinia],
         mocks: {
           $route: {
             name: routeName
@@ -16,15 +22,19 @@ describe('TheSubnav', () => {
         }
       }
     })
+
+    return { jobsStore }
   }
 
   describe('when user is on jobs page', () => {
-    it('displays job coun', () => {
+    it('displays job coun', async () => {
       const routeName = 'JobsReasults'
 
-      renderTheSubnav(routeName)
+      const { jobsStore } = renderTheSubnav(routeName)
+      const numberOfJobs = 16
+      jobsStore.FILTERED_JOBS_BY_ORGANIZATIONS = Array(numberOfJobs).fill({})
 
-      const jobCount = screen.getByText('2137')
+      const jobCount = await screen.findByText(numberOfJobs)
 
       expect(jobCount).toBeInTheDocument()
     })
@@ -34,9 +44,11 @@ describe('TheSubnav', () => {
     it('does NOT displays job count', () => {
       const routeName = 'Home'
 
-      renderTheSubnav(routeName)
+      const { jobsStore } = renderTheSubnav(routeName)
+      const numberOfJobs = 16
+      jobsStore.FILTERED_JOBS_BY_ORGANIZATIONS = Array(numberOfJobs).fill({})
 
-      const jobCount = screen.queryByText('2137')
+      const jobCount = screen.queryByText(numberOfJobs)
 
       expect(jobCount).not.toBeInTheDocument()
     })

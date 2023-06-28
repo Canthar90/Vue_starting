@@ -32,7 +32,7 @@ describe('TheSubnav', () => {
 
       const { jobsStore } = renderTheSubnav(routeName)
       const numberOfJobs = 16
-      jobsStore.FILTERED_JOBS_BY_ORGANIZATIONS = Array(numberOfJobs).fill({})
+      jobsStore.FILTERED_JOBS = Array(numberOfJobs).fill({})
 
       const jobCount = await screen.findByText(numberOfJobs)
 

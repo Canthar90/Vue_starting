@@ -114,15 +114,82 @@
 // console.log(numbers)
 
 // -----------------------------
-// FILTER
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 11, 23, 521]
+// // FILTER
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 11, 23, 521]
 
-console.log(numbers.filter((number) => number > 6))
+// console.log(numbers.filter((number) => number > 6))
 
-const jobs = [
-  { title: 'Angular dev', organization: 'Microsoft' },
-  { title: 'Programmer', organization: 'Google' },
-  { title: 'Developer', organization: 'Microsoft' }
-]
+// const jobs = [
+//   { title: 'Angular dev', organization: 'Microsoft' },
+//   { title: 'Programmer', organization: 'Google' },
+//   { title: 'Developer', organization: 'Microsoft' }
+// ]
 
-console.log(jobs.filter((job) => job.organization === 'Microsoft'))
+// console.log(jobs.filter((job) => job.organization === 'Microsoft'))
+
+// --------------------------------------------------
+// Reactivity in Vue 3
+
+const { ref, reactive, computed, toRef, toRefs } = require('vue')
+
+let a = ref(1)
+let b = ref(2)
+
+console.log(a.value)
+console.log(b.value)
+
+let c = computed(() => a.value + b.value)
+console.log(c.value)
+
+a.value = 10
+console.log(c.value)
+
+const name = ref('Boris')
+console.log(name.value)
+
+const title = computed(() => name.value + ' the Great')
+console.log(title.value)
+
+name.value = 'Peter'
+
+console.log(title.value)
+
+// Object reactivity
+
+// Reactive for objects !!
+
+// Multiple lvl of reactivity We can chain dependencies
+const person = reactive({
+  firstName: 'Boris',
+  lastName: 'Paskhaver'
+})
+// Destructuring
+// const { firstName, lastName } = person
+// // hard workaround below
+// const firstName = toRef(person, 'firstName')
+
+// const lastName = toRef(person, 'lastName')
+
+// cooler way shorter one
+const { firstName, lastName } = toRefs(person)
+
+const title2 = computed(() => `${firstName.value} ${lastName.value} the Wunderbar`)
+
+// const title2Length = computed(() => title2.value.length)
+
+console.log(title2.value)
+// console.log(title2Length.value)
+
+person.firstName = 'Napoleonionon'
+
+// console.log(title2Length.value)
+console.log(title2.value)
+
+person.lastName = 'Griffin'
+// console.log(title2Length.value)
+console.log(title2.value)
+
+const refPreson = toRefs(person)
+
+console.log(person.firstName)
+console.log(refPreson.firstName)

@@ -17,29 +17,23 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { computed, ref } from 'vue'
 
-export default {
-  name: 'CollapsibleAccordion',
-
-  props: {
-    header: {
-      type: String,
-      required: true
-    }
-  },
-
-  setup() {
-    const isOpen = ref(false)
-
-    const open = () => {
-      isOpen.value = !isOpen.value
-    }
-
-    const caretIcon = computed(() => (isOpen.value ? ['fas', 'angle-up'] : ['fas', 'angle-down']))
-
-    return { isOpen, open, caretIcon }
+defineProps({
+  header: {
+    type: String,
+    required: true
   }
+})
+
+const isOpen = ref(false)
+
+const open = () => {
+  isOpen.value = !isOpen.value
 }
+
+const caretIcon = computed(() => (isOpen.value ? ['fas', 'angle-up'] : ['fas', 'angle-down']))
+
+// }
 </script>

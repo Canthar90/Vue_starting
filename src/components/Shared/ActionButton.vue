@@ -1,11 +1,9 @@
 <template>
-  <button :class="buttonClass">
-    {{ text }}
-  </button>
+  <button :class="buttonClass">{{ text }}</button>
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, toRefs } from 'vue'
 
 export default {
   name: 'ActionButton',
@@ -25,9 +23,11 @@ export default {
   },
 
   setup(props) {
+    const { type } = toRefs(props)
+
     const buttonClass = computed(() => {
       return {
-        [props.type]: true
+        [type.value]: true
       }
     })
     return { buttonClass }

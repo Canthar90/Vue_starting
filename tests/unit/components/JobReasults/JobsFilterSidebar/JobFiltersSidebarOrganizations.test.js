@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/vue'
 import userEvent from '@testing-library/user-event'
 import { createTestingPinia } from '@pinia/testing'
+import { useRouter } from 'vue-router'
+vi.mock('vue-router')
 
 import JobFiltrtSidebarOrganizations from '@/components/JobReasults/JobFiltersSidebar/JobFiltersSidebarOrganizations.vue'
 import { useJobsStore } from '@/stores/jobs'
@@ -11,13 +13,9 @@ describe('JobFiltersSidebarOrganizations', () => {
     const pinia = createTestingPinia()
     const jobsStore = useJobsStore()
     const userStore = useUserStore()
-    const $router = { push: vi.fn() }
 
     render(JobFiltrtSidebarOrganizations, {
       global: {
-        mocks: {
-          $router
-        },
         plugins: [pinia],
         stubs: {
           FontAwesomeIcon: true
@@ -25,7 +23,7 @@ describe('JobFiltersSidebarOrganizations', () => {
       }
     })
 
-    return { jobsStore, userStore, $router }
+    return { jobsStore, userStore }
   }
 
   it('renders unique list of organizations from jobs', async () => {
@@ -43,6 +41,8 @@ describe('JobFiltersSidebarOrganizations', () => {
 
   describe('When users click checkbox', () => {
     it('communicates that user has selected checkbox for organizations', async () => {
+      useRouter.mockReturnValue({ push: vi.fn() })
+
       const { jobsStore, userStore } = renderJobFiltersSidebarOrganizations()
 
       jobsStore.UNIQUE_ORGANIZATIONS = new Set(['Google', 'Amazon'])
@@ -59,7 +59,10 @@ describe('JobFiltersSidebarOrganizations', () => {
     })
 
     it('navigates user to Job Reasults page to se new batch of jobs', async () => {
-      const { jobsStore, $router } = renderJobFiltersSidebarOrganizations()
+      const push = vi.fn()
+      useRouter.mockReturnValue({ push })
+
+      const { jobsStore } = renderJobFiltersSidebarOrganizations()
 
       jobsStore.UNIQUE_ORGANIZATIONS = new Set(['Google'])
 
@@ -71,7 +74,7 @@ describe('JobFiltersSidebarOrganizations', () => {
       })
       await userEvent.click(googleCheckbox)
 
-      expect($router.push).toHaveBeenCalledWith({ name: 'JobsReasults' })
+      expect(push).toHaveBeenCalledWith({ name: 'JobsReasults' })
     })
   })
 })

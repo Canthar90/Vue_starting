@@ -45,10 +45,9 @@ describe('JobListings', () => {
 
   describe('when params exclude page number', () => {
     it('displays page number 1', () => {
-      const queryParams = { page: undefined }
-      const $route = createRoute(queryParams)
+      useRoute.mockReturnValue({ query: {} })
 
-      renderJobListings($route)
+      renderJobListings()
 
       expect(screen.getByText('Page 1')).toBeInTheDocument()
     })
@@ -56,10 +55,9 @@ describe('JobListings', () => {
 
   describe('when params include page number', () => {
     it('displays page number', () => {
-      const queryParams = { page: '3' }
-      const $route = createRoute(queryParams)
+      useRoute.mockReturnValue({ query: { page: '3' } })
 
-      renderJobListings($route)
+      renderJobListings()
 
       expect(screen.getByText('Page 3')).toBeInTheDocument()
     })
@@ -67,8 +65,9 @@ describe('JobListings', () => {
 
   describe('when user is on the first page', () => {
     it('does not show link to previous page', async () => {
-      const $route = createRoute({ page: '1' })
-      renderJobListings($route)
+      useRoute.mockReturnValue({ query: { page: '1' } })
+
+      renderJobListings()
       const jobsStore = useJobsStore()
       jobsStore.jobs = Array(15).fill({})
 
@@ -78,8 +77,8 @@ describe('JobListings', () => {
     })
 
     it('shows link to next page', async () => {
-      const $route = createRoute({ page: '1' })
-      renderJobListings($route)
+      useRoute.mockReturnValue({ query: { page: '1' } })
+      renderJobListings()
 
       const jobsStore = useJobsStore()
       jobsStore.jobs = Array(15).fill({})
@@ -92,8 +91,8 @@ describe('JobListings', () => {
 
   describe('when the user is on the last page', () => {
     it('Does not show link to next page', async () => {
-      const $route = createRoute({ page: '2' })
-      renderJobListings($route)
+      useRoute.mockReturnValue({ query: { page: '2' } })
+      renderJobListings()
 
       const jobsStore = useJobsStore()
       jobsStore.jobs = Array(15).fill({})
@@ -103,8 +102,8 @@ describe('JobListings', () => {
       expect(nextLink).not.toBeInTheDocument()
     })
     it('Show link to the previous page', async () => {
-      const $route = createRoute({ page: '2' })
-      renderJobListings($route)
+      useRoute.mockReturnValue({ query: { page: '2' } })
+      renderJobListings()
 
       const jobsStore = useJobsStore()
       jobsStore.jobs = Array(15).fill({})

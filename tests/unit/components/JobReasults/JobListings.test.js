@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/vue'
 import { RouterLinkStub } from '@vue/test-utils'
+import { useRoute } from 'vue-router'
+vi.mock('vue-router')
 
 import { createTestingPinia } from '@pinia/testing'
 
@@ -9,22 +11,12 @@ import { useJobsStore } from '@/stores/jobs'
 vi.mock('axios')
 
 describe('JobListings', () => {
-  const createRoute = (queryParams = {}) => ({
-    query: {
-      page: '5',
-      ...queryParams
-    }
-  })
-
-  const renderJobListings = ($route) => {
+  const renderJobListings = () => {
     const pinia = createTestingPinia()
 
     render(JobListings, {
       global: {
         plugins: [pinia],
-        mocks: {
-          $route: $route
-        },
         stubs: {
           RouterLink: RouterLinkStub
         }
@@ -33,17 +25,17 @@ describe('JobListings', () => {
   }
 
   it('fetches jobs', () => {
-    const $route = createRoute()
+    useRoute.mockReturnValue({ query: {} })
 
-    renderJobListings($route)
+    renderJobListings()
     const jobsStore = useJobsStore()
     expect(jobsStore.FETCH_JOBS).toHaveBeenCalled()
   })
 
   it('It displays maximum of 10 jobs', async () => {
-    const $route = createRoute({ page: 1 })
-    renderJobListings($route)
+    useRoute.mockReturnValue({ query: { page: '1' } })
 
+    renderJobListings()
     const jobsStore = useJobsStore()
     jobsStore.jobs = Array(15).fill({})
 

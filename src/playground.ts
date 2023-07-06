@@ -130,66 +130,83 @@
 // --------------------------------------------------
 // Reactivity in Vue 3
 
-const { ref, reactive, computed, toRef, toRefs } = require('vue')
+// const { ref, reactive, computed, toRef, toRefs } = require('vue')
 
-let a = ref(1)
-let b = ref(2)
+// let a = ref(1)
+// let b = ref(2)
 
-console.log(a.value)
-console.log(b.value)
+// console.log(a.value)
+// console.log(b.value)
 
-let c = computed(() => a.value + b.value)
-console.log(c.value)
+// let c = computed(() => a.value + b.value)
+// console.log(c.value)
 
-a.value = 10
-console.log(c.value)
+// a.value = 10
+// console.log(c.value)
 
-const name = ref('Boris')
-console.log(name.value)
+// const name = ref('Boris')
+// console.log(name.value)
 
-const title = computed(() => name.value + ' the Great')
-console.log(title.value)
+// const title = computed(() => name.value + ' the Great')
+// console.log(title.value)
 
-name.value = 'Peter'
+// name.value = 'Peter'
 
-console.log(title.value)
+// console.log(title.value)
 
 // Object reactivity
 
 // Reactive for objects !!
 
 // Multiple lvl of reactivity We can chain dependencies
-const person = reactive({
-  firstName: 'Boris',
-  lastName: 'Paskhaver'
-})
-// Destructuring
-// const { firstName, lastName } = person
-// // hard workaround below
-// const firstName = toRef(person, 'firstName')
+// const person = reactive({
+//   firstName: 'Boris',
+//   lastName: 'Paskhaver'
+// })
+// // Destructuring
+// // const { firstName, lastName } = person
+// // // hard workaround below
+// // const firstName = toRef(person, 'firstName')
 
-// const lastName = toRef(person, 'lastName')
+// // const lastName = toRef(person, 'lastName')
 
-// cooler way shorter one
-const { firstName, lastName } = toRefs(person)
+// // cooler way shorter one
+// const { firstName, lastName } = toRefs(person)
 
-const title2 = computed(() => `${firstName.value} ${lastName.value} the Wunderbar`)
+// const title2 = computed(() => `${firstName.value} ${lastName.value} the Wunderbar`)
 
-// const title2Length = computed(() => title2.value.length)
+// // const title2Length = computed(() => title2.value.length)
 
-console.log(title2.value)
-// console.log(title2Length.value)
+// console.log(title2.value)
+// // console.log(title2Length.value)
 
-person.firstName = 'Napoleonionon'
+// person.firstName = 'Napoleonionon'
 
-// console.log(title2Length.value)
-console.log(title2.value)
+// // console.log(title2Length.value)
+// console.log(title2.value)
 
-person.lastName = 'Griffin'
-// console.log(title2Length.value)
-console.log(title2.value)
+// person.lastName = 'Griffin'
+// // console.log(title2Length.value)
+// console.log(title2.value)
 
-const refPreson = toRefs(person)
+// const refPreson = toRefs(person)
 
-console.log(person.firstName)
-console.log(refPreson.firstName)
+// console.log(person.firstName)
+// console.log(refPreson.firstName)
+
+import type { Job } from '@/api/types'
+
+const state1: Partial<Job> = {}
+
+const state2: Partial<Job> = {
+  organization: 'Microsoft'
+}
+
+const state3: Partial<Job> = {
+  organization: 'Microsoft',
+  jobType: 'Full-time'
+}
+
+// const invalidState: Partial<Job> = {
+//   a: 5
+// }

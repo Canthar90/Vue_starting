@@ -17,7 +17,7 @@
   </div>
 </template>
 
-<script setup>
+<script lan="ts" setup>
 import { computed, ref } from 'vue'
 
 defineProps({

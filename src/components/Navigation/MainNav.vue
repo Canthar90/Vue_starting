@@ -27,8 +27,8 @@
 </template>
 
 <!-- we will use option API right now -->
-<script>
-import { mapActions, mapState } from 'pinia'
+<script lag="ts" setup>
+import { ref, computed } from 'vue'
 
 import { useUserStore } from '@/stores/user'
 
@@ -36,36 +36,21 @@ import ActionButton from '../Shared/ActionButton.vue'
 import ProfileImage from '@/components/Navigation/ProfileImage.vue'
 import TheSubnav from '@/components/Navigation/TheSubnav.vue'
 
-export default {
-  name: 'MainNav',
-  components: {
-    ActionButton,
-    ProfileImage,
-    TheSubnav // <the-subnav>
-  },
-  data() {
-    return {
-      menuItems: [
-        { text: 'Teams', url: '/teams' },
-        { text: 'Locations', url: '/' },
-        { text: 'Life at Bobo Corp', url: '/' },
-        { text: 'How we hire', url: '/' },
-        { text: 'Students', url: '/' },
-        { text: 'Jobs', url: '/jobs/reasults' }
-      ]
-    }
-  },
-  computed: {
-    ...mapState(useUserStore, ['isLoggedIn']),
-    headerHeightClass() {
-      return {
-        'h-16': !this.isLoggedIn, //true
-        'h-32': this.isLoggedIn //false
-      }
-    }
-  },
-  methods: {
-    ...mapActions(useUserStore, ['loginUser'])
-  }
-}
+const menuItems = ref([
+  { text: 'Teams', url: '/teams' },
+  { text: 'Locations', url: '/' },
+  { text: 'Life at Bobo Corp', url: '/' },
+  { text: 'How we hire', url: '/' },
+  { text: 'Students', url: '/' },
+  { text: 'Jobs', url: '/jobs/reasults' }
+])
+
+const userStore = useUserStore()
+const loginUser = userStore.loginUser
+const isLoggedIn = computed(() => userStore.isLoggedIn)
+
+const headerHeightClass = computed(() => ({
+  'h-16': isLoggedIn.value, //true
+  'h-32': isLoggedIn.value //false
+}))
 </script>

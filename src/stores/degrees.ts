@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import type { Degree } from '@/api/types'
 
 import getDegrees from '@/api/getDegrees'
@@ -12,5 +12,7 @@ export const useDegreesStore = defineStore('degrees', () => {
     degrees.value = recivedDegrees
   }
 
-  return { degrees, FETCH_DEGREES }
+  const UNIQUE_DEGREES = computed(() => degrees.value.map((degree) => degree.degree))
+
+  return { degrees, FETCH_DEGREES, UNIQUE_DEGREES }
 })

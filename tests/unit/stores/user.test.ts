@@ -20,6 +20,11 @@ describe('state', () => {
     const store = useUserStore()
     expect(store.selectedJobTypes).toEqual([])
   })
+
+  it('Stores degrees that user would like to filter by', () => {
+    const store = useUserStore()
+    expect(store.selectedDegrees).toEqual([])
+  })
 })
 
 describe('actions', () => {

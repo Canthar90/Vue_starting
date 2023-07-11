@@ -1,5 +1,17 @@
 <template>
-  <div class="flex w-96 flex-col border-r border-solid border-brand-gray-1 bg-white p-4">
+  <div
+    :class="{
+      flex: true,
+      'w-96': true,
+      'flex-col': true,
+      'border-r': true,
+      'border-solid': true,
+      'border-brand-gray-1': true,
+      'bg-white': true,
+      'p-4': true,
+      'pt-16': !userStore.isLoggedIn
+    }"
+  >
     <section class="pb-5">
       <div class="flex flex-row justify-between">
         <h3 class="my-4 text-base font-semibold">What do you want to do?</h3>

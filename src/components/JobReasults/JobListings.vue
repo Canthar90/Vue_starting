@@ -1,5 +1,12 @@
 <template>
-  <main class="flex-auto bg-brand-gray-2 p-8">
+  <main
+    :class="{
+      'flex-auto': true,
+      'bg-brand-gray-2': true,
+      'p-8': true,
+      'pt-24': !userStore.isLoggedIn
+    }"
+  >
     <ol>
       <job-listing v-for="job in displayedJobs" :key="job.id" :job="job" />
     </ol>
@@ -39,6 +46,7 @@ import { useRoute } from 'vue-router'
 import JobListing from '@/components/JobReasults/JobListing.vue'
 import { useJobsStore } from '@/stores/jobs'
 import { useDegreesStore } from '@/stores/degrees'
+import { useUserStore } from '@/stores/user'
 
 import usePreviousAndNextPage from '@/composables/usePreviousAndNextPages'
 
@@ -47,6 +55,7 @@ onMounted(jobsStore.FETCH_JOBS)
 const degreesStore = useDegreesStore()
 onMounted(degreesStore.FETCH_DEGREES)
 
+const userStore = useUserStore()
 const route = useRoute()
 const currentPage = computed(() => Number.parseInt((route.query.page as string) || '1'))
 

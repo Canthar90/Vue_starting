@@ -46,7 +46,7 @@ const menuItems = ref([
 ])
 
 const userStore = useUserStore()
-const loginUser = userStore.loginUser
+const loginUser = userStore.LOGIN_USER
 const isLoggedIn = computed(() => userStore.isLoggedIn)
 
 const headerHeightClass = computed(() => ({

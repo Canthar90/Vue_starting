@@ -6,6 +6,8 @@ import { useRouter } from 'vue-router'
 vi.mock('vue-router')
 
 import JobFilersSidebarCheckboxGroup from '@/components/JobReasults/JobFiltersSidebar/JobFilersSidebarCheckboxGroup.vue'
+import { useUserStore } from '@/stores/user'
+
 const useRouterMock = useRouter as Mock
 
 describe('JobFiltersSidebarJobTypes', () => {
@@ -23,19 +25,18 @@ describe('JobFiltersSidebarJobTypes', () => {
   })
 
   const renderJobFiltersSidebarCheckboxGroup = (props: JobFiltersSidebarCheckboxGroupProps) => {
-    const pinia = createTestingPinia()
+    const pinia = createTestingPinia({ stubActions: false })
+    const userStore = useUserStore()
 
     render(JobFilersSidebarCheckboxGroup, {
       props: {
         ...props
       },
       global: {
-        plugins: [pinia],
-        stubs: {
-          FontAwesomeIcon: true
-        }
+        plugins: [pinia]
       }
     })
+    return { userStore }
   }
 
   it('renders unique list of values', () => {
@@ -83,6 +84,31 @@ describe('JobFiltersSidebarJobTypes', () => {
       await userEvent.click(fullTimeCheckbox)
 
       expect(push).toHaveBeenCalledWith({ name: 'JobsReasults' })
+    })
+  })
+
+  describe('when user clears job filters', () => {
+    it('unchecks any checked checkboxes', async () => {
+      useRouterMock.mockReturnValue({ push: vi.fn() })
+      const props = createProps({
+        uniqueValues: new Set(['Full-time'])
+      })
+      const { userStore } = renderJobFiltersSidebarCheckboxGroup(props)
+
+      const fullTimeCheckboxBeforeAction = screen.getByRole<HTMLInputElement>('checkbox', {
+        name: /full-time/i
+      })
+      await userEvent.click(fullTimeCheckboxBeforeAction)
+
+      expect(fullTimeCheckboxBeforeAction.checked).toBe(true)
+
+      userStore.CLEAR_USER_JOB_FILTER_SELECTIONS()
+
+      const fullTimeCheckboxAfterAction = await screen.getByRole<HTMLInputElement>('checkbox', {
+        name: /full-time/i
+      })
+
+      expect(fullTimeCheckboxAfterAction.checked).toBe(false)
     })
   })
 })

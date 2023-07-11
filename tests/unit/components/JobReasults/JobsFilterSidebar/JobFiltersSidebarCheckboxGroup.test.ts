@@ -10,7 +10,6 @@ const useRouterMock = useRouter as Mock
 
 describe('JobFiltersSidebarJobTypes', () => {
   interface JobFiltersSidebarCheckboxGroupProps {
-    header: string
     uniqueValues: Set<string>
     action: Mock
   }
@@ -18,7 +17,6 @@ describe('JobFiltersSidebarJobTypes', () => {
   const createProps = (
     props: Partial<JobFiltersSidebarCheckboxGroupProps> = {}
   ): JobFiltersSidebarCheckboxGroupProps => ({
-    header: 'Some header',
     uniqueValues: new Set(['ValueA', 'ValueB']),
     action: vi.fn(),
     ...props
@@ -40,15 +38,11 @@ describe('JobFiltersSidebarJobTypes', () => {
     })
   }
 
-  it('renders unique list of values', async () => {
+  it('renders unique list of values', () => {
     const props = createProps({
-      header: 'Job Types',
       uniqueValues: new Set(['Full-time', 'Part-time'])
     })
     renderJobFiltersSidebarCheckboxGroup(props)
-
-    const button = screen.getByRole('button', { name: /job types/i })
-    await userEvent.click(button)
 
     const jobTypesListItems = screen.getAllByRole('listitem')
     const jobTypes = jobTypesListItems.map((node) => node.textContent)
@@ -61,15 +55,11 @@ describe('JobFiltersSidebarJobTypes', () => {
       useRouterMock.mockReturnValue({ push: vi.fn() })
       const action = vi.fn()
       const props = createProps({
-        header: 'Job Types',
         uniqueValues: new Set(['Full-time', 'Part-time']),
         action
       })
 
       renderJobFiltersSidebarCheckboxGroup(props)
-
-      const button = screen.getByRole('button', { name: /job types/i })
-      await userEvent.click(button)
 
       const fullTimeCheckbox = screen.getByRole('checkbox', {
         name: /full-time/i
@@ -79,17 +69,13 @@ describe('JobFiltersSidebarJobTypes', () => {
       expect(action).toHaveBeenCalledWith(['Full-time'])
     })
 
-    it.only('navigates user to job reasults page to see fresh batch of filtered jobs', async () => {
+    it('navigates user to job reasults page to see fresh batch of filtered jobs', async () => {
       const push = vi.fn()
       useRouterMock.mockReturnValue({ push })
       const props = createProps({
-        header: 'Job types',
         uniqueValues: new Set(['Full-time'])
       })
       renderJobFiltersSidebarCheckboxGroup(props)
-
-      const button = screen.getByRole('button', { name: /job types/i })
-      await userEvent.click(button)
 
       const fullTimeCheckbox = screen.getByRole('checkbox', {
         name: /full-time/i

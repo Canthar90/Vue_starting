@@ -25,24 +25,15 @@
       </div>
 
       <collapsible-accordion header="Degrees">
-        <job-filers-sidebar-checkbox-group
-          :unique-values="UNIQUE_DEGREES"
-          :action="userStore.ADD_SELECTED_DEGREES"
-        />
+        <job-filters-sidebar-degrees></job-filters-sidebar-degrees>
       </collapsible-accordion>
 
       <collapsible-accordion header="Job Types">
-        <job-filers-sidebar-checkbox-group
-          :unique-values="UNIQUE_JOB_TYPES"
-          :action="userStore.ADD_SELECTED_JOB_TYPES"
-        />
+        <job-filters-sidebar-job-types></job-filters-sidebar-job-types>
       </collapsible-accordion>
 
       <collapsible-accordion header="Organizations">
-        <job-filers-sidebar-checkbox-group
-          :unique-values="UNIQUE_ORGANIZATIONS"
-          :action="userStore.ADD_SELECTED_ORGANIZATIONS"
-        />
+        <job-filters-sidebar-organizations></job-filters-sidebar-organizations>
       </collapsible-accordion>
     </section>
   </div>
@@ -53,18 +44,12 @@ import { computed } from 'vue'
 
 import ActionButton from '@/components/Shared/ActionButton.vue'
 import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
-import JobFilersSidebarCheckboxGroup from '@/components/JobReasults/JobFiltersSidebar/JobFilersSidebarCheckboxGroup.vue'
 
-import { useJobsStore } from '@/stores/jobs'
+import JobFiltersSidebarDegrees from '@/components/JobReasults/JobFiltersSidebar/JobFiltersSidebarDegrees.vue'
+import JobFiltersSidebarJobTypes from '@/components/JobReasults/JobFiltersSidebar/JobFiltersSidebarJobTypes.vue'
+import JobFiltersSidebarOrganizations from '@/components/JobReasults/JobFiltersSidebar/JobFiltersSidebarOrganizations.vue'
+
 import { useUserStore } from '@/stores/user'
-import { useDegreesStore } from '@/stores/degrees'
-
-const jobsStore = useJobsStore()
-const UNIQUE_ORGANIZATIONS = computed(() => jobsStore.UNIQUE_ORGANIZATIONS)
-const UNIQUE_JOB_TYPES = computed(() => jobsStore.UNIQUE_JOB_TYPES)
-
-const degreesStore = useDegreesStore()
-const UNIQUE_DEGREES = computed(() => degreesStore.UNIQUE_DEGREES)
 
 const userStore = useUserStore()
 </script>

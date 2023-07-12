@@ -31,7 +31,6 @@
 </template>
 
 <script lang="ts" setup>
-import ActionButton from '@/components/Shared/ActionButton.vue'
 import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 
 import JobFiltersSidebarDegrees from '@/components/JobReasults/JobFiltersSidebar/JobFiltersSidebarDegrees.vue'

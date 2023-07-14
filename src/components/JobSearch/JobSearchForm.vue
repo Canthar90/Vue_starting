@@ -39,7 +39,7 @@ const router = useRouter()
 
 const searchForJobs = () => {
   router.push({
-    name: 'JobReasults',
+    name: 'JobsReasults',
     query: { role: role.value, location: location.value }
   })
 }

@@ -33,6 +33,9 @@
 </template>
 
 <script lang="ts" setup>
+import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+
 import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 
 import JobFiltersSidebarDegrees from '@/components/JobReasults/JobFiltersSidebar/JobFiltersSidebarDegrees.vue'
@@ -44,4 +47,12 @@ import JobFiltersSidebarSkills from '@/components/JobReasults/JobFiltersSidebar/
 import { useUserStore } from '@/stores/user'
 
 const userStore = useUserStore()
+const route = useRoute()
+
+const parseSkillsSearchTerm = () => {
+  const role = (route.query.role as string) || ''
+  userStore.UPDATE_SKILLS_SEARCH_TERM(role)
+}
+
+onMounted(parseSkillsSearchTerm)
 </script>

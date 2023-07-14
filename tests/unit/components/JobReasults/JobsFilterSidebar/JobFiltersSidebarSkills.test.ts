@@ -5,7 +5,6 @@ import { createTestingPinia } from '@pinia/testing'
 import { useUserStore } from '@/stores/user'
 
 import JobFiltersSidebarSkills from '@/components/JobReasults/JobFiltersSidebar/JobFiltersSidebarSkills.vue'
-import type { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons'
 
 describe('JobFiltersSidebrarSkills', () => {
   const renderJobFiltersSidebarSkills = () => {

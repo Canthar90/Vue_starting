@@ -194,4 +194,17 @@ describe('getters', () => {
       })
     })
   })
+
+  describe('INCLUDE_JOB_BY_ID', () => {
+    it('includes job by id', () => {
+      const userStore = useUserStore()
+      userStore.searchID = 3
+
+      const jobsStore = useJobsStore()
+      const job = createJob({ id: 3 })
+
+      const reasult = jobsStore.INCLUDE_JOB_BY_ID(job)
+      expect(reasult).toBe(true)
+    })
+  })
 })

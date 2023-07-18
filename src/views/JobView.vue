@@ -1,9 +1,8 @@
 <template>
   <div class="bg-slate-100">
-    <div class="mx-24 block rounded border border-solid bg-white p-8">
+    <div class="mx-24 block rounded border border-solid bg-white pt-8">
       <div :class="{ 'pt-24': !userStore.isLoggedIn }">
         <div class="flex w-full flex-row justify-center text-center">
-          Job Page for job {{ currentJobId }}
           <div v-if="FILTERED_JOBS_BY_ID.length">
             <SingleJob v-for="job in FILTERED_JOBS_BY_ID" :key="job.id" :job="job" />
           </div>

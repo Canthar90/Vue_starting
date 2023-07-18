@@ -12,7 +12,7 @@ export const useUserStore = defineStore('user', () => {
   const selectedJobTypes = ref<string[]>([])
   const selectedDegrees = ref<string[]>([])
   const skillsSearchTerm = ref<string>('')
-  const searchID = ref<number>()
+  const searchID = ref<number>(0)
 
   const LOGIN_USER = () => {
     isLoggedIn.value = true

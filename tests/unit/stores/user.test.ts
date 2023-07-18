@@ -30,6 +30,11 @@ describe('state', () => {
     const store = useUserStore()
     expect(store.skillsSearchTerm).toBe('')
   })
+
+  it('stores empty id for job searching prpose', () => {
+    const store = useUserStore()
+    expect(store.searchID).toBe(0)
+  })
 })
 
 describe('actions', () => {
@@ -76,6 +81,15 @@ describe('actions', () => {
       store.skillsSearchTerm = ''
       store.UPDATE_SKILLS_SEARCH_TERM('Vue')
       expect(store.skillsSearchTerm).toBe('Vue')
+    })
+  })
+
+  describe('UPDATE_ID', () => {
+    it('recives searched id number entered by user in route', () => {
+      const store = useUserStore()
+      store.searchID = 0
+      store.UPDATE_ID(40)
+      expect(store.searchID).toBe(40)
     })
   })
 

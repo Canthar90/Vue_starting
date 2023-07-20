@@ -1,7 +1,7 @@
 <template>
-  <jobViewSingleJob />
+  <JobViewSingleJob />
 </template>
 
 <script lang="ts" setup>
-import jobViewSingleJob from '@/components/JobView/jobViewSingleJob.vue'
+import JobViewSingleJob from '@/components/JobView/JobViewSingleJob.vue'
 </script>

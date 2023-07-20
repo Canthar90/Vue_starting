@@ -1,6 +1,5 @@
 <template>
   <div class="flex-auto bg-brand-gray-2 p-8">
-    <!-- <div class="mx-24 block rounded border border-solid bg-white pt-8"> -->
     <div :class="{ 'pt-24': !userStore.isLoggedIn }">
       <div class="flex w-full flex-row justify-center text-center">
         <div v-if="FILTERED_JOBS_BY_ID.length">
@@ -10,7 +9,6 @@
       </div>
     </div>
   </div>
-  <!-- </div> -->
 </template>
 
 <script lang="ts" setup>
@@ -39,5 +37,4 @@ watch([currentJobId], () => {
   const newSet = jobsStore.FILTERED_JOBS_BY_ID
   return newSet
 })
-console.log(FILTERED_JOBS_BY_ID)
 </script>

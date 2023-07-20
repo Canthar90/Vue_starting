@@ -5,8 +5,6 @@ import type { Job } from '@/api/types'
 import SingleJobOffer from '@/components/JobView/SingleJobOffer.vue'
 import { createJob } from 'tests/utils/createJob'
 
-import SingleJobOffer from '@/components/JobView/SingleJobOffer.vue'
-
 describe('SingleJobOffer', () => {
   it('renders content of job offer', () => {
     const renderSingleJobOffer = (job: Job) => {
@@ -26,7 +24,17 @@ describe('SingleJobOffer', () => {
 
     renderSingleJobOffer({
       id: 1,
-      title: 'Vue Developer'
+      title: 'Vue Developer',
+      organization: 'Evil Corp',
+      degree: 'Highest',
+      jobType: 'Junior',
+      locations: ['La', 'NYC'],
+      minimumQualifications: ['List', 'Great', 'Qualifications'],
+      preferredQualifications: ['Preferred', 'Skills'],
+      description: ['Description', 'List'],
+      dateAdded: 'Some date'
     })
+
+    expect(screen.getByText('Evil Corp:')).toBeInTheDocument()
   })
 })

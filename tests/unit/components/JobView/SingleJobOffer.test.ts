@@ -3,7 +3,6 @@ import { RouterLinkStub } from '@vue/test-utils'
 
 import type { Job } from '@/api/types'
 import SingleJobOffer from '@/components/JobView/SingleJobOffer.vue'
-import { createJob } from 'tests/utils/createJob'
 
 describe('SingleJobOffer', () => {
   const renderSingleJobOffer = (job: Job) => {

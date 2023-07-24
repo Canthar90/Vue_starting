@@ -28,6 +28,10 @@
       <collapsible-accordion header="Organizations">
         <job-filters-sidebar-organizations></job-filters-sidebar-organizations>
       </collapsible-accordion>
+
+      <collapsible-accordion header="Locations">
+        <job-filters-sidebar-localizations></job-filters-sidebar-localizations>
+      </collapsible-accordion>
     </section>
   </div>
 </template>
@@ -43,7 +47,7 @@ import JobFiltersSidebarJobTypes from '@/components/JobReasults/JobFiltersSideba
 import JobFiltersSidebarOrganizations from '@/components/JobReasults/JobFiltersSidebar/JobFiltersSidebarOrganizations.vue'
 import JobFiltersSidebarPrompt from '@/components/JobReasults/JobFiltersSidebar/JobFiltersSidebarPrompt.vue'
 import JobFiltersSidebarSkills from '@/components/JobReasults/JobFiltersSidebar/JobFiltersSidebarSkills.vue'
-
+import JobFiltersSidebarLocalizations from './JobFiltersSidebarLocalizations.vue'
 import { useUserStore } from '@/stores/user'
 
 const userStore = useUserStore()

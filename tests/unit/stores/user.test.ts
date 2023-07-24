@@ -16,9 +16,15 @@ describe('state', () => {
     const store = useUserStore()
     expect(store.selectedOrganizations).toEqual([])
   })
+
   it('Stores job types that user would like to filter jobs by', () => {
     const store = useUserStore()
     expect(store.selectedJobTypes).toEqual([])
+  })
+
+  it('Stores locations that user would like to filter by', () => {
+    const store = useUserStore()
+    expect(store.selectedLocations).toEqual([])
   })
 
   it('Stores degrees that user would like to filter by', () => {
@@ -72,6 +78,14 @@ describe('actions', () => {
       const store = useUserStore()
       store.ADD_SELECTED_DEGREES(["Bachelor's", "Master's"])
       expect(store.selectedDegrees).toEqual(["Bachelor's", "Master's"])
+    })
+  })
+
+  describe('ADD_SELECTED_LOCATIONS', () => {
+    it('updates locations the user has choen to filter by', () => {
+      const store = useUserStore()
+      store.ADD_SELECTED_LOCATIONS(['Golina', 'LA'])
+      expect(store.selectedLocations).toEqual(['Golina', 'LA'])
     })
   })
 

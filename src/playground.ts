@@ -194,19 +194,38 @@
 // console.log(person.firstName)
 // console.log(refPreson.firstName)
 
-import type { Job } from '@/api/types'
+// import type { Job } from '@/api/types'
 
-const state1: Partial<Job> = {}
+// const state1: Partial<Job> = {}
 
-const state2: Partial<Job> = {
-  organization: 'Microsoft'
-}
+// const state2: Partial<Job> = {
+//   organization: 'Microsoft'
+// }
 
-const state3: Partial<Job> = {
-  organization: 'Microsoft',
-  jobType: 'Full-time'
-}
+// const state3: Partial<Job> = {
+//   organization: 'Microsoft',
+//   jobType: 'Full-time'
+// }
 
 // const invalidState: Partial<Job> = {
 //   a: 5
 // }
+
+// import { useJobsStore } from '@/stores/jobs'
+// import { ref, computed } from 'vue'
+
+// const jobsStore = useJobsStore()
+
+// const currentPage = ref(1)
+
+// const FILTERED_JOBS = computed(() => jobsStore.FILTERED_JOBS)
+
+// console.log(typeof FILTERED_JOBS.value)
+
+// const displayedJobs = computed(() => {
+//   const pageNumber = currentPage.value
+//   const firstJobIndex = (pageNumber - 1) * 10
+//   const lastJobIndex = pageNumber * 10
+//   // return FILTERED_JOBS.value.slice(firstJobIndex, lastJobIndex)
+// })
+console.log('Dupa')

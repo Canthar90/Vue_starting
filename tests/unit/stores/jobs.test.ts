@@ -51,8 +51,8 @@ describe('getters', () => {
       ]
 
       const reasult = store.UNIQUE_ORGANIZATIONS
-
-      expect(reasult).toEqual(new Set(['Google', 'Amazon']))
+      const expected = new Set(['Google', 'Amazon'])
+      expect(reasult).toEqual(expected)
     })
   })
 
@@ -68,6 +68,20 @@ describe('getters', () => {
       const reasult = store.UNIQUE_JOB_TYPES
 
       expect(reasult).toEqual(new Set(['Full-time', 'Temporary']))
+    })
+  })
+
+  describe('UNIQUE_LOCATIONS', () => {
+    it.only('finds unique locations from list of jobs', () => {
+      const store = useJobsStore()
+      store.jobs = [
+        createJob({ locations: ['LA', 'Elblag'] }),
+        createJob({ locations: ['Golina', 'LA'] })
+      ]
+
+      const reasult = store.UNIQUE_LOCATIONS
+
+      expect(reasult).toEqual(new Set(['LA', 'Elblag', 'Golina']))
     })
   })
 

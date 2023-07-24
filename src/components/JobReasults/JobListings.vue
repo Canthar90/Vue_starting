@@ -63,6 +63,8 @@ const FILTERED_JOBS = computed(() => jobsStore.FILTERED_JOBS)
 
 const maxPage = computed(() => Math.ceil(FILTERED_JOBS.value.length / 10))
 const { previousPage, nextPage } = usePreviousAndNextPage(currentPage, maxPage)
+console.log(FILTERED_JOBS.value)
+console.log(maxPage)
 
 const displayedJobs = computed(() => {
   const pageNumber = currentPage.value

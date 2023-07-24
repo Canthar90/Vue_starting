@@ -141,6 +141,32 @@ describe('getters', () => {
     })
   })
 
+  describe('INCLUDE_JOB_BY_LOCATION', () => {
+    describe('when user has not selected any locations', () => {
+      it('includes the job', () => {
+        const userStore = useUserStore()
+        userStore.selectedLocations = []
+
+        const jobStore = useJobsStore()
+        const job = createJob()
+
+        const result = jobStore.INCLUDE_JOB_BY_LOCATION(job)
+        expect(result).toBe(true)
+      })
+    })
+
+    it('checks if job is associated with given locations', () => {
+      const userStore = useUserStore()
+      userStore.selectedLocations = ['LA', 'NYC']
+
+      const jobStore = useJobsStore()
+      const job = createJob({ locations: ['LA', 'Walbrzych'] })
+
+      const result = jobStore.INCLUDE_JOB_BY_LOCATION(job)
+      expect(result).toBe(true)
+    })
+  })
+
   describe('INCLUDE_JOB_BY_JOB_TYPE', () => {
     describe('when user has not selected any job types', () => {
       it('Includes job', () => {

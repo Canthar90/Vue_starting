@@ -15,6 +15,7 @@ export const FILTERED_JOBS_BY_ID = 'FILTERED_JOBS_BY_ID'
 export const INCLUDE_JOB_BY_ORGANIZATION = 'INCLUDE_JOB_BY_ORGANIZATION'
 export const INCLUDE_JOB_BY_JOB_TYPE = 'INCLUDE_JOB_BY_JOB_TYPE'
 export const INCLUDE_JOB_BY_DEGREE = 'INCLUDE_JOB_BY_DEGREE'
+export const INCLUDE_JOB_BY_LOCATION = 'INCLUDE_JOB_BY_LOCATION'
 export const INCLUDE_JOB_BY_SKILL = 'INCLUDE_JOB_BY_SKILL'
 export const INCLUDE_JOB_BY_ID = 'INCLUDE_JOB_BY_ID'
 
@@ -70,6 +71,15 @@ export const useJobsStore = defineStore('jobs', {
       if (userStore.selectedDegrees.length === 0) return true
 
       return userStore.selectedDegrees.includes(job.degree)
+    },
+
+    [INCLUDE_JOB_BY_LOCATION]: () => (job: Job) => {
+      const userStore = useUserStore()
+      if (userStore.selectedLocations.length === 0) return true
+
+      return userStore.selectedLocations.some((selectedLocation) =>
+        job.locations.includes(selectedLocation)
+      )
     },
 
     [INCLUDE_JOB_BY_SKILL]: () => (job: Job) => {

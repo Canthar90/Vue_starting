@@ -72,7 +72,7 @@ describe('getters', () => {
   })
 
   describe('UNIQUE_LOCATIONS', () => {
-    it.only('finds unique locations from list of jobs', () => {
+    it('finds unique locations from list of jobs', () => {
       const store = useJobsStore()
       store.jobs = [
         createJob({ locations: ['LA', 'Elblag'] }),

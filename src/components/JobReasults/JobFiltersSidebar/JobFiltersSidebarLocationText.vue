@@ -4,7 +4,7 @@
       v-model.lazy.trim="locationSearchTerm"
       type="text"
       class="h-12 w-full rounded border border-solid border-brand-gray-1 p-3 text-base shadow-gray"
-      placeholder="Lisbone, Los Angeles"
+      placeholder="Lisbon, Los Angeles"
     />
   </div>
 </template>

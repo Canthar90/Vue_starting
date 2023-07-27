@@ -220,6 +220,32 @@ describe('getters', () => {
       expect(reasult).toBe(true)
     })
 
+    describe('INCLUDE_JOB_BY_SEARCHED_LOCATION', () => {
+      it('Identifies if job match searched location', () => {
+        const userStore = useUserStore()
+        userStore.locationSearchTerm = 'Warszawa'
+
+        const jobStore = useJobsStore()
+        const job = createJob({ locations: ['Warszawa'] })
+
+        const reasult = jobStore.INCLUDE_JOB_BY_SEARCHED_LOCATION(job)
+
+        expect(reasult).toBe(true)
+      })
+
+      it('handles inconsistant character casing', () => {
+        const userStore = useUserStore()
+        userStore.locationSearchTerm = 'wArSzawA'
+
+        const jobStore = useJobsStore()
+        const job = createJob({ locations: ['Warszawa'] })
+
+        const reasult = jobStore.INCLUDE_JOB_BY_SEARCHED_LOCATION(job)
+
+        expect(reasult).toBe(true)
+      })
+    })
+
     describe('when the user has not entered any skill', () => {
       it('includes job', () => {
         const userStore = useUserStore()

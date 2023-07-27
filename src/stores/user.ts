@@ -47,6 +47,7 @@ export const useUserStore = defineStore('user', () => {
     selectedDegrees.value = []
     selectedJobTypes.value = []
     selectedOrganizations.value = []
+    selectedLocations.value = []
     skillsSearchTerm.value = ''
     searchID.value = 0
   }

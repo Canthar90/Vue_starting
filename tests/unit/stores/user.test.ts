@@ -114,10 +114,12 @@ describe('actions', () => {
       store.selectedJobTypes = ['Random job type']
       store.selectedOrganizations = ['Random organization']
       store.skillsSearchTerm = 'Vue'
+      store.selectedLocations = ['Golina']
 
       store.CLEAR_USER_JOB_FILTER_SELECTIONS()
       expect(store.selectedDegrees).toEqual([])
       expect(store.selectedJobTypes).toEqual([])
+      expect(store.selectedLocations).toEqual([])
       expect(store.selectedOrganizations).toEqual([])
       expect(store.skillsSearchTerm).toBe('')
     })

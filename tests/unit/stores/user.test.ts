@@ -41,6 +41,11 @@ describe('state', () => {
     const store = useUserStore()
     expect(store.searchID).toBe(0)
   })
+
+  it('Stores Localization search word', () => {
+    const store = useUserStore()
+    expect(store.locationSearchTerm).toBe('')
+  })
 })
 
 describe('actions', () => {
@@ -104,6 +109,15 @@ describe('actions', () => {
       store.searchID = 0
       store.UPDATE_ID(40)
       expect(store.searchID).toBe(40)
+    })
+  })
+
+  describe('UPDATE_LOCATION_SEARCH_TERM', () => {
+    it('recives search location entered by user and stores it', () => {
+      const store = useUserStore()
+      store.locationSearchTerm = ''
+      store.UPDATE_LOCATION_SEARCH_TERM('Warszawa')
+      expect(store.locationSearchTerm).toBe('Warszawa')
     })
   })
 

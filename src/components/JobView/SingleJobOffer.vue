@@ -14,6 +14,8 @@
         </h4>
       </div>
 
+      <action-button text="Apply For This Job" type="primary" class="mb-8 mt-4 rounded-r-3xl" />
+
       <hr class="min-h-0 min-w-full bg-black pb-0" />
 
       <div class="px-8 pb-6 pt-8">
@@ -45,12 +47,14 @@
           </li>
         </ol>
       </div>
+      <action-button text="Apply For This Job" type="primary" class="mt-8 rounded-r-3xl" />
     </div>
   </main>
 </template>
 
 <script lang="ts" setup>
 import { type PropType } from 'vue'
+import ActionButton from '@/components/Shared/ActionButton.vue'
 
 import type { Job } from '@/api/types'
 

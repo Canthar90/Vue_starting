@@ -17,6 +17,8 @@
 
       <job-filters-sidebar-skills />
 
+      <job-filters-sidebar-location-text />
+
       <collapsible-accordion header="Degrees">
         <job-filters-sidebar-degrees></job-filters-sidebar-degrees>
       </collapsible-accordion>
@@ -48,6 +50,7 @@ import JobFiltersSidebarOrganizations from '@/components/JobReasults/JobFiltersS
 import JobFiltersSidebarPrompt from '@/components/JobReasults/JobFiltersSidebar/JobFiltersSidebarPrompt.vue'
 import JobFiltersSidebarSkills from '@/components/JobReasults/JobFiltersSidebar/JobFiltersSidebarSkills.vue'
 import JobFiltersSidebarLocalizations from './JobFiltersSidebarLocalizations.vue'
+import JobFiltersSidebarLocationText from './JobFiltersSidebarLocationText.vue'
 import { useUserStore } from '@/stores/user'
 
 const userStore = useUserStore()
@@ -58,7 +61,7 @@ const parseSkillsSearchTerm = () => {
   const role = (route.query.role as string) || ''
   userStore.UPDATE_SKILLS_SEARCH_TERM(role)
   const location = (route.query.location as string) || ''
-  userStore.ADD_SELECTED_LOCATIONS([location])
+  userStore.UPDATE_LOCATION_SEARCH_TERM(location)
 }
 
 onMounted(parseSkillsSearchTerm)

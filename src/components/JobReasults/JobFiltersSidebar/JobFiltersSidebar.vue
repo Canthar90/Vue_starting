@@ -51,11 +51,14 @@ import JobFiltersSidebarLocalizations from './JobFiltersSidebarLocalizations.vue
 import { useUserStore } from '@/stores/user'
 
 const userStore = useUserStore()
+
 const route = useRoute()
 
 const parseSkillsSearchTerm = () => {
   const role = (route.query.role as string) || ''
   userStore.UPDATE_SKILLS_SEARCH_TERM(role)
+  const location = (route.query.location as string) || ''
+  userStore.ADD_SELECTED_LOCATIONS([location])
 }
 
 onMounted(parseSkillsSearchTerm)

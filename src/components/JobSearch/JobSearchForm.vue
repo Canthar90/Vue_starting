@@ -9,7 +9,7 @@
       <div class="relative flex h-full flex-1 items-center pr-3">
         <label for="role" class="absolute -top-10 left-0">Role</label>
 
-        <text-input id="role" v-model="role" placeholder="Software engineer" />
+        <text-input id="role" v-model.lazy.trim="role" placeholder="Software engineer" />
       </div>
 
       <span
@@ -19,7 +19,7 @@
       <div class="relative flex h-full flex-1 items-center pl-3">
         <label for="location" class="absolute -top-10 left-0">Where?</label>
 
-        <text-input id="location" v-model="location" placeholder="Los Angeles" />
+        <text-input id="location" v-model.lazy.trim="location" placeholder="Los Angeles" />
       </div>
     </div>
 
